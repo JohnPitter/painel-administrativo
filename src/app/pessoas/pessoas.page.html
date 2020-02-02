@@ -6,4 +6,48 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content fullscreen>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-list-header>
+      Ativas
+    </ion-list-header>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="http://lorempixel.com/120/120/people/">
+        </ion-avatar>
+        <ion-label>
+          <h2>Marina Nunes</h2>
+          <h3>Senior Software Developer</h3>
+          <p>Desde 01/02/2020</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="unread(item)">Desativar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="http://lorempixel.com/120/120/people/">
+        </ion-avatar>
+        <ion-label>
+          <h2>Tiago Genro</h2>
+          <h3>Junior Software Developer</h3>
+          <p>Desde 01/02/2020</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="unread(item)">Desativar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
