@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Chart } from 'chart.js';
+import { PessoasService } from 'src/pessoasService/pessoas.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,11 @@ export class HomePage {
   pieChart: any;
   doughnutChart: any;
 
-  constructor(public navCtrl: NavController) { }
+  listaPessoas : any[];
+
+  constructor(public navCtrl: NavController, pessoasDados : PessoasService) { 
+    this.listaPessoas = pessoasDados.listaPessoas;
+  }
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -33,6 +38,39 @@ export class HomePage {
     }, 250)
   }
 
+
+  retornaDadosFuncao(){
+    var count = 0;
+    this.listaPessoas.forEach(pessoa => {
+      if(pessoa.funcao == "Dev"){
+        count++;
+      }
+    })
+    return count;
+  }
+
+  retornaDadosLevel(){
+    var count = 0;
+    this.listaPessoas.forEach(pessoa => {
+      if(pessoa.lvl == "10"){
+        count++;
+      }
+    })
+    return count;
+  }
+
+  retornaDadosMembros(){
+    var count = 0;
+    this.listaPessoas.forEach(pessoa => {
+      if(pessoa.tech == "Java"){
+        count++;
+      }
+    })
+    return count;
+  }
+
+
+  //Gráficos
   getChart(context, chartType, data, options?) {
     return new Chart(context, {
       data,
@@ -41,13 +79,13 @@ export class HomePage {
     })
   }
 
-
+  
   getBarChart() {
     const data = {
       labels: ['Diretoria', 'Desenvolvedores', 'Marketing', 'Pessoal'],
       datasets: [{
         label: 'Número de membros',
-        data: [5, 5, 1, 1],
+        data: [5, this.retornaDadosFuncao(), 1, 1],
         backgroundColor: [
           'rgb(255, 0, 0)',
           'rgb(20, 0, 255)',
@@ -109,7 +147,7 @@ export class HomePage {
     const data = {
       labels: ['Senior', 'Júnior', 'Trainee'],
       datasets: [{
-        data: [5, 2, 1],
+        data: [this.retornaDadosLevel(), 2, 1],
         backgroundColor: ['rgb(200, 6, 0)', 'rgb(36, 0, 255)', 'rgb(242, 255, 0)']
       }]
     }
@@ -122,7 +160,7 @@ export class HomePage {
       labels: ['Java', 'Angular', 'JavaScript'],
       datasets: [{
         label: 'Teste Chart',
-        data: [10, 7, 7],
+        data: [this.retornaDadosMembros(), 7, 7],
         backgroundColor: [
           'rgb(0, 244, 97)',
           'rgb(37, 39, 43)',

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PessoasService } from 'src/pessoasService/pessoas.service';
 
 @Component({
   selector: 'app-levels',
@@ -7,6 +8,18 @@ import { Component } from '@angular/core';
 })
 export class LevelsPage {
 
-  constructor() {}
+  listaPessoas : any[];
+
+  constructor(pessoasDados : PessoasService) {
+    this.listaPessoas = pessoasDados.listaPessoas;
+  }
+
+  mostraCargo(cargo : String){
+
+    if(cargo == "Senior"){
+      return true;
+    }
+    return false;
+  }
 
 }

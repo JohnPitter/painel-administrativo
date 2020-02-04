@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PessoasService } from 'src/pessoasService/pessoas.service';
 
 @Component({
   selector: 'app-pessoas',
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class PessoasPage {
 
-  constructor() {}
+  listaPessoas : any[];
+
+  constructor(pessoasDados : PessoasService) {
+    this.listaPessoas = pessoasDados.listaPessoas;
+  }
 
 }
