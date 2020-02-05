@@ -9,17 +9,30 @@ import { PessoasService } from 'src/pessoasService/pessoas.service';
 export class LevelsPage {
 
   listaPessoas : any[];
+  listaSenior : any[];
+  listaJunior : any[];
+  listaTrainee : any[];
 
   constructor(pessoasDados : PessoasService) {
     this.listaPessoas = pessoasDados.listaPessoas;
+    this.verificaSenior();
   }
 
-  mostraCargo(cargo : String){
-
-    if(cargo == "Senior"){
-      return true;
-    }
-    return false;
+  verificaSenior(){
+    this.listaPessoas.forEach( pessoa => {
+      if(pessoa.lvl == "10"){
+        this.listaSenior = this.listaSenior || [];
+        this.listaSenior.push(pessoa);
+      } else if (pessoa.lvl == "12") {
+        this.listaJunior = this.listaJunior || [];
+        this.listaJunior.push(pessoa);
+      } else if(pessoa.lvl == "14") {
+        this.listaTrainee = this.listaTrainee || [];
+        this.listaTrainee.push(pessoa);
+      }else{
+        return;
+      }
+    })
   }
 
 }

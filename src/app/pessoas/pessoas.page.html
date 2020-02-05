@@ -24,7 +24,7 @@
         </ion-avatar>
         <ion-label>
           <h2>{{pessoa.nome}}</h2>
-          <h3>{{pessoa.lvl == "10" ? pessoa.cargo : 'Em ajuste'}}</h3>
+          <h3>{{verificaCargo(pessoa.lvl)}}</h3>
           <p>Ativo desde <em>{{pessoa.dataEntrada}}</em></p>
         </ion-label>
       </ion-item>

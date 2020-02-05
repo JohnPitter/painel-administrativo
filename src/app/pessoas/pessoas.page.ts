@@ -14,4 +14,15 @@ export class PessoasPage {
     this.listaPessoas = pessoasDados.listaPessoas;
   }
 
+  verificaCargo(lvl : String){
+    if(lvl == "10"){
+      return "Senior";
+    } else if (lvl == "12") {
+      return "Junior";
+    } else if(lvl == "14") {
+      return "Trainne";
+    } else {
+      return "Not Found";
+    }
+  }
 }

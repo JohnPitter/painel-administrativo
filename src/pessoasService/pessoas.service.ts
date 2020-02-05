@@ -13,7 +13,7 @@ export class PessoasService {
     lvl: "10",
     img: "https://picsum.photos/200/200",
     dataEntrada: "01/02/2020",
-    funcao: "Dev",
+    funcao: "Diretoria",
     tech: "Java"
   }, {
     nome: "Thiago Genro",
@@ -31,8 +31,17 @@ export class PessoasService {
     lvl: "14",
     img: "https://picsum.photos/200/200",
     dataEntrada: "01/02/2020",
-    funcao: "Dev",
+    funcao: "Marketing",
     tech: "JavaScript"
+  }, {
+    nome: "Junior Fernando",
+    cargo: "Trainee",
+    idade: "21",
+    lvl: "14",
+    img: "https://picsum.photos/200/200",
+    dataEntrada: "01/02/2020",
+    funcao: "Pessoal",
+    tech: "Angular"
   }];
 
   constructor() { }
