@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NumericValueAccessor } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,22 @@ export class PessoasService {
     funcao: "Pessoal",
     tech: "Angular"
   }];
+
+  storyPoints = [{
+    ano: "2019",
+    jan: "25",
+    fev: "12",
+    mar: "50",
+    abr: "70",
+    mai: "34",
+    jun: "50",
+    jul: "60",
+    ago: "45",
+    set: "67",
+    out: "54",
+    nov: "37",
+    dez: "40"
+  }]
 
   constructor() { }
 }

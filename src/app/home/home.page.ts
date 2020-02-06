@@ -22,9 +22,11 @@ export class HomePage {
   doughnutChart: any;
 
   listaPessoas: any[];
+  storyPoints: any[];
 
   constructor(public navCtrl: NavController, pessoasDados: PessoasService) {
     this.listaPessoas = pessoasDados.listaPessoas;
+    this.storyPoints = pessoasDados.storyPoints;
   }
 
   ngAfterViewInit() {
@@ -39,31 +41,58 @@ export class HomePage {
   }
 
 
+  retornaDadosStoryPoints(semestre: Number) {
+    
+    let primeiroSemestre: Number[];
+    let segundoSemestre: Number[];
+    
+    this.storyPoints.forEach(dados => {
+      primeiroSemestre = primeiroSemestre || [];
+      segundoSemestre = segundoSemestre || [];
+      
+      if(dados.jan != "0") primeiroSemestre.push(dados.jan);
+      if(dados.fev != "0") primeiroSemestre.push(dados.fev);
+      if(dados.mar != "0") primeiroSemestre.push(dados.mar);
+      if(dados.abr != "0") primeiroSemestre.push(dados.abr);
+      if(dados.mai != "0") primeiroSemestre.push(dados.mai);
+      if(dados.jun != "0") primeiroSemestre.push(dados.jun);
+      //Segundo Semestre
+      if(dados.jul != "0") segundoSemestre.push(dados.jul);
+      if(dados.ago != "0") segundoSemestre.push(dados.ago);
+      if(dados.set != "0") segundoSemestre.push(dados.set);
+      if(dados.out != "0") segundoSemestre.push(dados.out);
+      if(dados.nov != "0") segundoSemestre.push(dados.nov);
+      if(dados.dez != "0") segundoSemestre.push(dados.dez);
+    })
+
+    return (semestre == 1) ? primeiroSemestre : segundoSemestre;
+  }
+
   retornaDadosFuncao() {
     var diretoria = 0;
     var devs = 0;
     var marketing = 0;
     var pessoal = 0;
 
-    let dadosFuncao : Number[];
+    let dadosFuncao: Number[];
 
     this.listaPessoas.forEach(pessoa => {
       if (pessoa.funcao == "Diretoria") {
         diretoria++;
-      } else if(pessoa.funcao == "Dev"){
+      } else if (pessoa.funcao == "Dev") {
         devs++;
-      } else if(pessoa.funcao == "Marketing"){
+      } else if (pessoa.funcao == "Marketing") {
         marketing++;
-      } else if(pessoa.funcao == "Pessoal"){
+      } else if (pessoa.funcao == "Pessoal") {
         pessoal++;
-      } else{
+      } else {
         return 0;
       }
     })
 
     dadosFuncao = dadosFuncao || [];
     dadosFuncao.push(diretoria, devs, marketing, pessoal);
-    
+
     return dadosFuncao;
   }
 
@@ -113,109 +142,109 @@ export class HomePage {
     dadosMembros.push(java, angular, js);
 
     return dadosMembros;
-}
+  }
 
 
-//Gráficos
-getChart(context, chartType, data, options ?) {
-  return new Chart(context, {
-    data,
-    options,
-    type: chartType
-  })
-}
+  //Gráficos
+  getChart(context, chartType, data, options?) {
+    return new Chart(context, {
+      data,
+      options,
+      type: chartType
+    })
+  }
 
 
-getBarChart() {
-  const data = {
-    labels: ['Diretoria', 'Desenvolvedores', 'Marketing', 'Pessoal'],
-    datasets: [{
-      label: 'Número de membros',
-      data: this.retornaDadosFuncao(),
-      backgroundColor: [
-        'rgb(255, 0, 0)',
-        'rgb(20, 0, 255)',
-        'rgb(255, 230, 0)',
-        'rgb(0, 255, 10)'
-      ],
-      borderWidth: 1
-    }]
-  };
+  getBarChart() {
+    const data = {
+      labels: ['Diretoria', 'Desenvolvedores', 'Marketing', 'Pessoal'],
+      datasets: [{
+        label: 'Número de membros',
+        data: this.retornaDadosFuncao(),
+        backgroundColor: [
+          'rgb(255, 0, 0)',
+          'rgb(20, 0, 255)',
+          'rgb(255, 230, 0)',
+          'rgb(0, 255, 10)'
+        ],
+        borderWidth: 1
+      }]
+    };
 
-  const options = {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
+    const options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+
+    return this.getChart(this.barCanvas.nativeElement, 'bar', data, options);
+  }
+
+  getLineChart() {
+    const data = {
+      labels: ['Primeiro Semestre', 'Segundo Semestre'],
+      datasets: [{
+        label: 'Scrum Points - 1S',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(0, 178, 255)',
+        borderColor: 'rgb(231, 205, 35)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.retornaDadosStoryPoints(1),
+        scanGaps: false,
+      }, {
+        label: 'Scrum Points - 2S',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(117, 0, 49)',
+        borderColor: 'rgb(51, 50, 46)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.retornaDadosStoryPoints(2),
+        scanGaps: false,
+      }
+      ]
+    }
+
+    return this.getChart(this.lineCanvas.nativeElement, 'line', data)
+  }
+
+  getPieChart() {
+    const data = {
+      labels: ['Senior', 'Júnior', 'Trainee'],
+      datasets: [{
+        data: this.retornaDadosLevel(),
+        backgroundColor: ['rgb(200, 6, 0)', 'rgb(36, 0, 255)', 'rgb(242, 255, 0)']
       }]
     }
+
+    return this.getChart(this.pieCanvas.nativeElement, 'pie', data);
   }
 
-  return this.getChart(this.barCanvas.nativeElement, 'bar', data, options);
-}
-
-getLineChart() {
-  const data = {
-    labels: ['Primeiro Semestre', 'Segundo Semestre'],
-    datasets: [{
-      label: 'Scrum Points - 1S',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgb(0, 178, 255)',
-      borderColor: 'rgb(231, 205, 35)',
-      borderCapStyle: 'butt',
-      borderJoinStyle: 'miter',
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [30, 50, 25, 10, 25, 12],
-      scanGaps: false,
-    }, {
-      label: 'Scrum Points - 2S',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgb(117, 0, 49)',
-      borderColor: 'rgb(51, 50, 46)',
-      borderCapStyle: 'butt',
-      borderJoinStyle: 'miter',
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [29, 135, 50, 70, 25, 12],
-      scanGaps: false,
+  getDoughnutChart() {
+    const data = {
+      labels: ['Java', 'Angular', 'JavaScript'],
+      datasets: [{
+        label: 'Teste Chart',
+        data: this.retornaDadosMembros(),
+        backgroundColor: [
+          'rgb(0, 244, 97)',
+          'rgb(37, 39, 43)',
+          'rgb(255, 207, 0)'
+        ]
+      }]
     }
-    ]
+
+    return this.getChart(this.doughnutCanvas.nativeElement, 'doughnut', data);
   }
-
-  return this.getChart(this.lineCanvas.nativeElement, 'line', data)
-}
-
-getPieChart() {
-  const data = {
-    labels: ['Senior', 'Júnior', 'Trainee'],
-    datasets: [{
-      data: this.retornaDadosLevel(),
-      backgroundColor: ['rgb(200, 6, 0)', 'rgb(36, 0, 255)', 'rgb(242, 255, 0)']
-    }]
-  }
-
-  return this.getChart(this.pieCanvas.nativeElement, 'pie', data);
-}
-
-getDoughnutChart() {
-  const data = {
-    labels: ['Java', 'Angular', 'JavaScript'],
-    datasets: [{
-      label: 'Teste Chart',
-      data: this.retornaDadosMembros(),
-      backgroundColor: [
-        'rgb(0, 244, 97)',
-        'rgb(37, 39, 43)',
-        'rgb(255, 207, 0)'
-      ]
-    }]
-  }
-
-  return this.getChart(this.doughnutCanvas.nativeElement, 'doughnut', data);
-}
 
 }
