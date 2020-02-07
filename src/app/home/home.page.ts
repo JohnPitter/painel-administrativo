@@ -46,24 +46,22 @@ export class HomePage {
     let primeiroSemestre: Number[];
     let segundoSemestre: Number[];
     
-    this.storyPoints.forEach(dados => {
-      primeiroSemestre = primeiroSemestre || [];
-      segundoSemestre = segundoSemestre || [];
+    primeiroSemestre = primeiroSemestre || [];
+    segundoSemestre = segundoSemestre || [];
       
-      if(dados.jan != "0") primeiroSemestre.push(dados.jan);
-      if(dados.fev != "0") primeiroSemestre.push(dados.fev);
-      if(dados.mar != "0") primeiroSemestre.push(dados.mar);
-      if(dados.abr != "0") primeiroSemestre.push(dados.abr);
-      if(dados.mai != "0") primeiroSemestre.push(dados.mai);
-      if(dados.jun != "0") primeiroSemestre.push(dados.jun);
+    primeiroSemestre.push(this.storyPoints[0].jan);
+    primeiroSemestre.push(this.storyPoints[0].fev);
+    primeiroSemestre.push(this.storyPoints[0].mar);
+    primeiroSemestre.push(this.storyPoints[0].abr);
+    primeiroSemestre.push(this.storyPoints[0].mai);
+    primeiroSemestre.push(this.storyPoints[0].jun);
       //Segundo Semestre
-      if(dados.jul != "0") segundoSemestre.push(dados.jul);
-      if(dados.ago != "0") segundoSemestre.push(dados.ago);
-      if(dados.set != "0") segundoSemestre.push(dados.set);
-      if(dados.out != "0") segundoSemestre.push(dados.out);
-      if(dados.nov != "0") segundoSemestre.push(dados.nov);
-      if(dados.dez != "0") segundoSemestre.push(dados.dez);
-    })
+    segundoSemestre.push(this.storyPoints[0].jul);
+    segundoSemestre.push(this.storyPoints[0].ago);
+    segundoSemestre.push(this.storyPoints[0].set);
+    segundoSemestre.push(this.storyPoints[0].out);
+    segundoSemestre.push(this.storyPoints[0].nov);
+    segundoSemestre.push(this.storyPoints[0].dez);
 
     return (semestre == 1) ? primeiroSemestre : segundoSemestre;
   }
@@ -154,6 +152,7 @@ export class HomePage {
     })
   }
 
+  
 
   getBarChart() {
     const data = {
@@ -186,7 +185,7 @@ export class HomePage {
 
   getLineChart() {
     const data = {
-      labels: ['Primeiro Semestre', 'Segundo Semestre'],
+      labels: ['Mês 1', 'Mês 2', 'Mês 3', 'Mês 4', 'Mês 5', 'Mês 6'],
       datasets: [{
         label: 'Scrum Points - 1S',
         fill: false,

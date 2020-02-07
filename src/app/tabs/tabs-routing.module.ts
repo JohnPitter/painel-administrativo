@@ -48,6 +48,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'info',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../info/info.module').then(m => m.InfoPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
