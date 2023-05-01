@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyBViFtpVoUM-tDrqY2yX0zwWcEZn_7Chzo",
+    authDomain: "mimos-admin.firebaseapp.com",
+    projectId: "mimos-admin",
+    storageBucket: "mimos-admin.appspot.com",
+    messagingSenderId: "601684725040",
+    appId: "1:601684725040:web:81644ae7f90df433c1ccf5"
+  }
+
 };
 
 /*

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Chart } from 'chart.js';
-import { PessoasService } from 'src/app/services/pessoas.service';
+import { PessoasService } from 'src/app/services/transactions.service';
 
 @Component({
   selector: 'app-home',

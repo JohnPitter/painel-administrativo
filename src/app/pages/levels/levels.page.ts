@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PessoasService } from 'src/app/services/pessoas.service';
+import { PessoasService } from 'src/app/services/transactions.service';
 
 @Component({
   selector: 'app-levels',
