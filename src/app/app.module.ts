@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ChartsModule } from 'ng2-charts';
-import { PessoasService } from 'src/pessoasService/pessoas.service';
+import { PessoasService } from 'src/app/services/pessoas.service';
 
 @NgModule({
   declarations: [AppComponent],
