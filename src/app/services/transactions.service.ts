@@ -1,29 +1,46 @@
 import { Injectable } from '@angular/core';
-import { collection as collectionFn, addDoc, getDocs, Firestore } from '@angular/fire/firestore';
+import { Firestore, collection, getDocs, getFirestore } from '@firebase/firestore';
+import { addDoc, deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { Transaction } from '../model/transaction.model';
 
 @Injectable({
   providedIn: "root",
 })
 export class TransactionsService {
-  constructor(private firestore: Firestore) { }
+
+  private firestore: Firestore;
+
+  constructor() {
+    this.firestore = getFirestore();
+  }
 
   // Exemplo de método para adicionar um documento
-  async addTransaction(collection: string, data: any) {
-    try {
-      const docRef = await addDoc(collectionFn(this.firestore, collection), data);
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
+  async addTransaction(transaction: Transaction): Promise<void> {
+    const transactionsCollection = collection(this.firestore, 'transactions');
+    await addDoc(transactionsCollection, transaction);
   }
 
   // Exemplo de método para recuperar documentos
-  async getTransactions(collection: string) {
-    const querySnapshot = await getDocs(collectionFn(this.firestore, collection));
+  async getTransactions(): Promise<Transaction[]> {
+    const transactionsCollection = collection(this.firestore, 'transactions');
+    const querySnapshot = await getDocs(transactionsCollection);
+    const transactions: Transaction[] = [];
+
     querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
+      const transaction = doc.data() as Transaction;
+      transaction.id = doc.id; // Adicionada esta linha para incluir o ID da transação
+      transactions.push(transaction);
     });
 
-    return querySnapshot;
+    return transactions;
+  }
+
+  async removeTransaction(transaction: Transaction): Promise<void> {
+    if (!transaction.id) {
+      throw new Error('Transaction must have an ID to be removed.');
+    }
+
+    const transactionDoc = doc(this.firestore, 'transactions', transaction.id);
+    await deleteDoc(transactionDoc);
   }
 }

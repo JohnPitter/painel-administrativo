@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Adicionar Entrada/Saída</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>Data</ion-label>
+    <ion-input type="date" [(ngModel)]="transactionDate"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Descrição" [(ngModel)]="transactionDescription"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-select label="Tipo" [(ngModel)]="transactionType">
+      <ion-select-option value="Entrada">Entrada</ion-select-option>
+      <ion-select-option value="Saida">Saída</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Valor" type="number" [(ngModel)]="transactionValue"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="saveTransaction()">Salvar</ion-button>
+</ion-content>

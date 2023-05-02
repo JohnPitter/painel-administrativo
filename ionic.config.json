@@ -1,5 +1,7 @@
 {
-  "name": "admin",
-  "integrations": {},
+  "name": "painel-administrativo",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
