@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, getDocs, getFirestore } from '@firebase/firestore';
-import { addDoc, deleteDoc, doc, setDoc } from 'firebase/firestore';
+import { addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { FirebaseStorage, getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { Transaction } from '../model/transaction.model';
 
 @Injectable({
@@ -9,9 +10,31 @@ import { Transaction } from '../model/transaction.model';
 export class TransactionsService {
 
   private firestore: Firestore;
+  private storage: FirebaseStorage;
 
   constructor() {
     this.firestore = getFirestore();
+    this.storage = getStorage();
+  }
+
+  async uploadImages(files: File[]): Promise<string[]> {
+    const downloadURLs: string[] = [];
+
+    let dataAtual = new Date();
+    let opcoes = { year: 'numeric', month: '2-digit' } as const;  // use "as const" para garantir que os tipos são corretos
+    let dataFormatada = dataAtual.toLocaleDateString('pt-BR', opcoes);
+
+    for (const file of files) {
+      const filePath = `comprovantes/${dataFormatada}/${file.name}`;
+      const storageRef = ref(this.storage, filePath);
+
+      await uploadBytes(storageRef, file);
+
+      const downloadURL = await getDownloadURL(storageRef);
+      downloadURLs.push(downloadURL);
+    }
+
+    return downloadURLs;
   }
 
   // Exemplo de método para adicionar um documento

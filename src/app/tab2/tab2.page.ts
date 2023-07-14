@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { TransactionsService } from 'src/app/services/transactions.service';
@@ -13,9 +13,9 @@ import { Transaction } from '../model/transaction.model';
 })
 export class Tab2Page implements OnInit {
 
-  totalEntradas = 0;
-  totalSaidas = 0;
-  saldoFinal = 0;
+  totalEntradas: number = 0;
+  totalSaidas: number = 0;
+  saldoFinal: number = 0;
 
   months = [
     { label: 'Janeiro', value: 1 },
@@ -33,18 +33,18 @@ export class Tab2Page implements OnInit {
   ];
 
   selectedMonth: number;
-  transactions: any;
+  transactions: Transaction[] = [];
   filtredTransactions: Transaction[] = [];
 
   constructor(private modalController: ModalController,
-    private transactionService: TransactionsService) {
+    private transactionService: TransactionsService,
+    private cdr: ChangeDetectorRef) {
     // Define o mês atual como selecionado por padrão
     this.selectedMonth = new Date().getMonth() + 1;
   }
 
   ngOnInit() {
-    this.loadData();
-    this.calculateTotals();
+    this.loadDataAndTotals();
   }
 
   eraseTotals() {
@@ -53,7 +53,7 @@ export class Tab2Page implements OnInit {
     this.saldoFinal = 0;
   }
 
-  loadData() {
+  loadDataAndTotals() {
     this.eraseTotals();
 
     this.transactionService.getTransactions().then((transactions: Transaction[]) => {
@@ -73,22 +73,24 @@ export class Tab2Page implements OnInit {
   }
 
   calculateTotals() {
-    this.filtredTransactions.forEach((transaction: any) => {
-      if (transaction.type === 'Entrada') {
-        this.totalEntradas += transaction.amount;
-      } else if (transaction.type === 'Saida') {
-        this.totalSaidas += transaction.amount;
-      }
-    });
+    this.filtredTransactions.forEach(this.updateTotals);
+  }
+
+  updateTotals = (transaction: Transaction) => {
+    if (transaction.type === 'Entrada') {
+      this.totalEntradas += Number(transaction.amount);
+    } else if (transaction.type === 'Saida') {
+      this.totalSaidas += Number(transaction.amount);
+    }
 
     this.saldoFinal = this.totalEntradas - this.totalSaidas;
   }
 
   monthChanged() {
-    let filtredTransactions = this.transactions.filter((transaction: any) => {
-      const date = moment(transaction.date)
-      return date.month() + 1 === this.selectedMonth
-    })
+    const filtredTransactions = this.transactions.filter((transaction: Transaction) => {
+      const date = moment(transaction.date);
+      return date.month() + 1 === this.selectedMonth;
+    });
 
     this.filtredTransactions = filtredTransactions;
     this.eraseTotals();
@@ -102,24 +104,39 @@ export class Tab2Page implements OnInit {
 
     modal.onDidDismiss().then((result) => {
       if (result.data) {
-        let transaction : Transaction = result.data
-        this.transactions.push(result.data)
-        this.transactionService.addTransaction(transaction);
-        this.calculateTotals();
+        const newTransactions: Transaction[] = result.data.transactions;
+        const invoices = result.data.invoices;
+
+        if (newTransactions.length > 0) {
+          newTransactions.forEach(transaction => {
+            this.transactionService.addTransaction(transaction).then(() => {
+              this.atualizarInformacoes();
+            });
+            this.updateTotals(transaction);
+          });
+
+          if (invoices) {
+            this.transactionService.uploadImages(invoices).then((sucess) => { console.log(sucess); });
+          }
+        }
       }
     });
 
     return await modal.present();
   }
 
-  removeTransaction(transation : Transaction){
-    this.transactionService.removeTransaction(transation);
-    this.loadData();
+  atualizarInformacoes() {
+    this.loadDataAndTotals();
+    this.cdr.detectChanges();
+  }
+
+  removeTransaction(transaction: Transaction) {
+    this.transactionService.removeTransaction(transaction).then(() => {
+      this.atualizarInformacoes();
+    });
   }
 
   exportToExcel() {
-    // Aqui você pode criar uma matriz com os dados da tabela
-    // Substitua este exemplo pelo conteúdo real da tabela
     const data = [
       ['Data', 'Descrição', 'Tipo', 'Valor'],
       ...this.filtredTransactions.map((transaction: Transaction) => [
@@ -130,17 +147,11 @@ export class Tab2Page implements OnInit {
       ])
     ];
 
-    // Cria a planilha a partir da matriz de dados
     const worksheet = XLSX.utils.aoa_to_sheet(data);
-
-    // Cria um novo livro e adiciona a planilha
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Entradas e Saídas');
 
-    // Exporta o livro como um arquivo .xlsx
     const wbout = XLSX.write(workbook, { bookType: 'xlsx', type: 'binary' });
-
-    // Função auxiliar para converter de string binária para um array de 8 bits
     function s2ab(s: string) {
       const buf = new ArrayBuffer(s.length);
       const view = new Uint8Array(buf);
@@ -150,7 +161,6 @@ export class Tab2Page implements OnInit {
       return buf;
     }
 
-    // Salva o arquivo no dispositivo do usuário
     const blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream' });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);

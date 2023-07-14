@@ -8,21 +8,44 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-label>Data</ion-label>
-    <ion-input type="date" [(ngModel)]="transactionDate"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Descrição" [(ngModel)]="transactionDescription"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-select label="Tipo" [(ngModel)]="transactionType">
-      <ion-select-option value="Entrada">Entrada</ion-select-option>
-      <ion-select-option value="Saida">Saída</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Valor" type="number" [(ngModel)]="transactionValue"></ion-input>
-  </ion-item>
-  <ion-button expand="block" (click)="saveTransaction()">Salvar</ion-button>
+  <form [formGroup]="transactionsForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="transactions">
+      <div *ngFor="let transaction of transactionsFormArray.controls; let i = index" [formGroupName]="i"
+        class="transaction-form-group">
+        <ion-item>
+          <ion-input type="date" formControlName="date" placeholder="Data"></ion-input>
+          <ion-item *ngIf="transaction.get('date')?.errors?.['dateOutOfRange']">
+            <ion-label>A data deve estar entre o ano atual e 2099</ion-label>
+          </ion-item>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="description" placeholder="Descrição"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-select formControlName="type" placeholder="Tipo">
+            <ion-select-option value="Entrada">Entrada</ion-select-option>
+            <ion-select-option value="Saida">Saída</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-input formControlName="amount" placeholder="Valor" inputmode="decimal"></ion-input>
+          <ion-item *ngIf="transaction.get('amount')?.errors?.['max']">
+            O valor máximo para o montante é 100000.
+          </ion-item>
+        </ion-item>
+        <ion-button expand="block" (click)="removeTransactionFormGroup(i)">Remover esta transação</ion-button>
+      </div>
+    </div>
+    <ion-button expand="block" (click)="addTransactionFormGroup()">Adicionar outra transação</ion-button>
+    <div>
+      <ion-item>
+        <ion-label>Notas</ion-label>
+        <ion-input type="file" multiple (change)="uploadFiles($event)"></ion-input>
+      </ion-item>
+      <div *ngFor="let url of imageURLs">
+        <img [src]="url" alt="Preview" style="max-width: 200px; max-height: 200px;" />
+      </div>
+    </div>
+    <ion-button expand="block" type="submit">Salvar todas as transações</ion-button>
+  </form>
 </ion-content>

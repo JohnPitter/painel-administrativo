@@ -29,6 +29,7 @@
     "firebase": "^9.21.0",
     "ionicons": "^7.0.0",
     "moment": "^2.29.4",
+    "ngx-currency": "^3.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
