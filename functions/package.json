@@ -1,0 +1,26 @@
+{
+  "name": "functions",
+  "scripts": {
+    "format": "prettier --write \"**/*.js\"",
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "deploy": "firebase deploy --only functions",
+    "test": "node tests/ensure-modules.js"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "firebase-functions": "^4.9.0",
+    "stripe": "^15.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-google": "^0.14.0",
+    "prettier": "^3.2.5"
+  },
+  "private": true
+}

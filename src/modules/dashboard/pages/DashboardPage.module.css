@@ -1,0 +1,192 @@
+.shortcuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.reminderButton {
+  appearance: none;
+  border: none;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reminderButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 39, 118, 0.24);
+}
+
+.modalSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modalSection h3 {
+  margin: 0 0 10px;
+  color: var(--color-text-primary);
+}
+
+.reminderList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.reminderList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.06);
+}
+
+.reminderTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.16);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 72px;
+}
+
+.reminderList strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--color-text-primary);
+}
+
+.reminderList span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.reminderList p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.modalPrimaryButton,
+.modalSecondaryButton {
+  appearance: none;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modalPrimaryButton {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  color: #fff;
+}
+
+.modalSecondaryButton {
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+}
+
+.modalSecondaryButton:hover,
+.modalPrimaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.subscriptionBanner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 30px;
+  padding: 22px 24px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0, 39, 118, 0.08), rgba(0, 146, 63, 0.16));
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  box-shadow: var(--shadow-md);
+}
+
+.bannerContent {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bannerContent h2 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 1.4rem;
+}
+
+.bannerContent p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 620px;
+}
+
+.bannerBadge {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.12);
+  color: var(--color-accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.bannerActions {
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.bannerPrimary {
+  appearance: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 39, 118, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bannerPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(0, 39, 118, 0.3);
+}
+
+.bannerHighlight {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 640px) {
+  .bannerActions {
+    flex: 1 1 100%;
+  }
+  .bannerPrimary {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,150 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 26px 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-md);
+}
+
+.badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 146, 63, 0.12);
+  color: var(--color-primary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.wrapper h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+}
+
+.wrapper p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field input {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: rgba(0, 146, 63, 0.6);
+  box-shadow: 0 0 0 4px rgba(0, 146, 63, 0.16);
+}
+
+.tableScroll {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.tableScroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tableScroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 39, 118, 0.2);
+  border-radius: 999px;
+}
+
+.table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: transparent;
+}
+
+.table th,
+.table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 39, 118, 0.08);
+  vertical-align: top;
+}
+
+.table thead {
+  background: rgba(0, 39, 118, 0.08);
+}
+
+.rateInput {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 39, 118, 0.08);
+}
+
+.rateInput input {
+  width: 72px;
+  border: none;
+  background: transparent;
+  text-align: right;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.rateInput input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.rateInput span {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.table small {
+  display: block;
+  margin-top: 4px;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.highlight {
+  background: rgba(0, 146, 63, 0.08);
+}
+
+.footer {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  background: rgba(0, 146, 63, 0.1);
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+}
+
+.tips {
+  margin-top: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}

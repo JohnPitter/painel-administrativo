@@ -1,0 +1,374 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--color-text-primary);
+}
+
+.header p {
+  margin: 4px 0 0;
+  color: var(--color-text-secondary);
+}
+
+.summaryChips {
+  display: inline-flex;
+  gap: 12px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+  padding: 26px 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-md);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.field input,
+.field textarea {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: rgba(0, 146, 63, 0.6);
+  box-shadow: 0 0 0 4px rgba(0, 146, 63, 0.16);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.priorityMatrix {
+  display: grid;
+  gap: 14px;
+}
+
+.matrixLabel {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.matrixGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.matrixCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 39, 118, 0.16);
+  background: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.matrixCard input {
+  display: none;
+}
+
+.matrixBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.matrixCard strong {
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+}
+
+.matrixCard p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+}
+
+.matrixCardActive {
+  border-color: rgba(0, 146, 63, 0.65);
+  box-shadow: 0 0 0 4px rgba(0, 146, 63, 0.18);
+  background: linear-gradient(140deg, rgba(0, 146, 63, 0.08), rgba(0, 39, 118, 0.06));
+  transform: translateY(-2px);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.actions button {
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 600;
+}
+
+.actions button[type='submit'] {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+}
+
+.secondaryButton {
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #d93025;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+}
+
+.filterModes {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+}
+
+.filterModeButton {
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filterModeButton:hover {
+  background: rgba(0, 39, 118, 0.12);
+  color: var(--color-text-primary);
+}
+
+.filterModeButtonActive {
+  composes: filterModeButton;
+  background: #002776;
+  color: #fff;
+}
+
+.filterField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px;
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.selectWrapper select {
+  width: 100%;
+  appearance: none;
+  padding: 12px 42px 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.16);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.98), rgba(0, 39, 118, 0.05));
+  color: var(--color-text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dateInput {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.16);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.98), rgba(0, 39, 118, 0.05));
+  color: var(--color-text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dateInput:focus {
+  outline: none;
+  border-color: rgba(0, 146, 63, 0.6);
+  box-shadow: 0 0 0 4px rgba(0, 146, 63, 0.16);
+}
+
+.selectWrapper select:focus {
+  outline: none;
+  border-color: rgba(0, 146, 63, 0.6);
+  box-shadow: 0 0 0 4px rgba(0, 146, 63, 0.16);
+}
+
+.selectWrapper::after {
+  content: '▾';
+  position: absolute;
+  right: 16px;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  pointer-events: none;
+}
+
+.filterSummary {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-sm);
+}
+
+.table th,
+.table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 39, 118, 0.08);
+}
+
+.tableSelectWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tableSelect {
+  appearance: none;
+  padding: 8px 34px 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 39, 118, 0.2);
+  background: linear-gradient(135deg, rgba(0, 39, 118, 0.12), rgba(0, 146, 63, 0.12));
+  color: var(--color-text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tableSelect:focus {
+  outline: none;
+  border-color: rgba(0, 146, 63, 0.6);
+  box-shadow: 0 0 0 3px rgba(0, 146, 63, 0.18);
+}
+
+.tableSelectWrapper::after {
+  content: '▾';
+  position: absolute;
+  right: 12px;
+  font-size: 0.75rem;
+  color: rgba(0, 39, 118, 0.75);
+  pointer-events: none;
+}
+
+.tableActions {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.tableActions button {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.tableActions button:last-child {
+  background: rgba(217, 48, 37, 0.85);
+  color: #fff;
+}
+
+.emptyState {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.06);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .summaryChips {
+    align-self: flex-start;
+  }
+
+  .matrixGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    align-items: stretch;
+  }
+
+  .filterField {
+    flex: 1 1 140px;
+  }
+}

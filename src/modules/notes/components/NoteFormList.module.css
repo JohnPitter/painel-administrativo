@@ -1,0 +1,312 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--color-text-primary);
+}
+
+.header p {
+  margin: 4px 0 0;
+  color: var(--color-text-secondary);
+}
+
+.summaryChips {
+  display: inline-flex;
+  gap: 12px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+  padding: 26px 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-md);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inlineField {
+  justify-content: flex-end;
+}
+
+.field label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.field input,
+.field textarea {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: rgba(0, 146, 63, 0.6);
+  box-shadow: 0 0 0 4px rgba(0, 146, 63, 0.16);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.actions button {
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 600;
+}
+
+.actions button[type='submit'] {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+}
+
+.secondaryButton {
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #d93025;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: flex-end;
+}
+
+.searchField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.searchField input {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.16);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.98), rgba(0, 39, 118, 0.05));
+  color: var(--color-text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.filterField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 180px;
+}
+
+.selectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.selectWrapper select {
+  width: 100%;
+  appearance: none;
+  padding: 12px 42px 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.16);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.98), rgba(0, 39, 118, 0.05));
+  color: var(--color-text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.selectWrapper::after {
+  content: '▾';
+  position: absolute;
+  right: 16px;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  pointer-events: none;
+}
+
+.togglePinned {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.togglePinned input {
+  width: 18px;
+  height: 18px;
+}
+
+.emptyState {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.06);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  text-align: center;
+}
+
+.noteGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.noteCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 39, 118, 0.12);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.noteCardPinned {
+  border-color: rgba(0, 39, 118, 0.35);
+  box-shadow: 0 0 0 4px rgba(0, 39, 118, 0.1);
+}
+
+.noteCardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.noteCardHeader > div:first-child {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.noteCardHeader h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--color-text-primary);
+}
+
+.noteActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  row-gap: 6px;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+.noteActions button {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.noteActions button:last-child {
+  background: rgba(217, 48, 37, 0.85);
+  color: #fff;
+}
+
+.noteContent {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+}
+
+.tagList {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tagBadge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.noteFooter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--color-text-tertiary, rgba(0, 39, 118, 0.7));
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .summaryChips {
+    align-self: flex-start;
+  }
+}

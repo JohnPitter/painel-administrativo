@@ -1,0 +1,180 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: min(520px, 80vw);
+}
+
+.section {
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  background: rgba(245, 247, 252, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+}
+
+.section p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.avatarPreview {
+  width: 96px;
+  height: 96px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--color-accent), #001c55);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatarPreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uploadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.08);
+  color: var(--color-accent);
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.uploadButton input {
+  display: none;
+}
+
+.nameForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nameForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.nameForm input {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.18);
+  background: #fff;
+}
+
+.formFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.formFooter span {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.formFooter button {
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-accent), #001c55);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+}
+
+.lockedInfo {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #7a4a00;
+}
+
+.subscriptionStatus {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.subscriptionStatus span {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.subscriptionStatus strong {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+}
+
+.subscriptionStatus small {
+  color: var(--color-text-secondary);
+}
+
+.dangerButton {
+  align-self: flex-start;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(217, 48, 37, 0.12);
+  color: #c62828;
+  border: 1px solid rgba(217, 48, 37, 0.2);
+  font-weight: 600;
+}
+
+.primaryButton {
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-accent), #001c55);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+}
+
+.actionsStack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.warningText {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 214, 102, 0.25);
+  color: #7a4a00;
+  font-size: 0.9rem;
+}
+
+.loadingState {
+  padding: 32px;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    min-width: 100%;
+  }
+}

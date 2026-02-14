@@ -1,0 +1,96 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.wrapper h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.wrapper p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.cards {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.timerCard,
+.settingsCard {
+  padding: 24px 26px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.display {
+  font-size: 3.3rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.controls button {
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 600;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+}
+
+.controls button:first-child {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+}
+
+.controls button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.durationGroup {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.durationGroup button {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 39, 118, 0.12);
+  background: rgba(255, 255, 255, 0.96);
+  font-weight: 600;
+}
+
+.durationActive {
+  background: rgba(0, 39, 118, 0.12);
+  border-color: rgba(0, 39, 118, 0.4);
+}
+
+.settingsCard select {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}

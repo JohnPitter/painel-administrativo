@@ -1,0 +1,561 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  padding: 26px 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.panelHeader h2 {
+  margin: 0;
+}
+
+.periodChip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.summaryStrip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(0, 39, 118, 0.07), rgba(0, 146, 63, 0.07));
+}
+
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summaryCard span {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.summaryCard strong {
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+}
+
+.summaryCardMuted strong {
+  color: var(--color-text-secondary);
+}
+
+.checkboxField {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(0, 39, 118, 0.25);
+  background: rgba(0, 39, 118, 0.03);
+}
+
+.checkboxField input {
+  margin-top: 4px;
+}
+
+.checkboxDescription {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.excludedBadge {
+  display: inline-flex;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: rgba(0, 39, 118, 0.12);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.wrapper h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px;
+}
+
+.filter select {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: rgba(0, 146, 63, 0.6);
+  box-shadow: 0 0 0 4px rgba(0, 146, 63, 0.16);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.actions button {
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-accent), #001d5f);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}
+
+.secondaryButton {
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.categoryRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inlineAdd {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.inlineAdd input {
+  flex: 1 1 160px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.inlineAdd button {
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  font-weight: 600;
+}
+
+.tableActions {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.tableActions button {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.tableActions button:last-child {
+  background: rgba(217, 48, 37, 0.85);
+  color: #fff;
+}
+
+.helperText {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #d93025;
+}
+
+.tableWrapper {
+  max-height: 460px;
+  overflow: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow-sm);
+}
+
+.listPanel {
+  padding: 22px 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.tableWrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 39, 118, 0.15);
+  border-radius: 999px;
+}
+
+.tableWrapper table,
+.tableWrapperWide table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.dataTable {
+  min-width: 720px;
+}
+
+.dataTable thead th {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+}
+
+.dataTable tbody tr {
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.dataTable tbody tr:hover {
+  background: rgba(0, 39, 118, 0.04);
+}
+
+.descriptionHeader {
+  min-width: 220px;
+}
+
+.valueHeader {
+  text-align: right;
+}
+
+.metaHeader {
+  text-align: center;
+}
+
+.descriptionCell {
+  min-width: 200px;
+}
+
+.descriptionCell strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+}
+
+.descriptionCell small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.detailCell {
+  color: var(--color-text-secondary);
+}
+
+.valueCell {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-align: right;
+}
+
+.metaCell {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.dateCell {
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.actionCell {
+  width: 140px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.chipCategory {
+  background: rgba(0, 39, 118, 0.08);
+  color: var(--color-primary);
+}
+
+.chipMethod {
+  background: rgba(0, 146, 63, 0.12);
+  color: #0a6a38;
+}
+
+.chipType {
+  background: rgba(115, 91, 255, 0.12);
+  color: #4a34c4;
+}
+
+.tableWrapperWide {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tableScrollArea {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-sm);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tableScrollArea table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  background: transparent;
+}
+
+.tableScrollArea::-webkit-scrollbar {
+  display: none;
+}
+
+.customScrollbar {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(235, 238, 245, 0.9);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.customScrollbar[data-disabled='true'] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.customScrollbarThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: rgba(179, 189, 206, 0.65);
+  transition: transform 0.2s ease, width 0.2s ease;
+}
+
+table th,
+table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 39, 118, 0.08);
+}
+table th {
+  font-weight: 600;
+}
+
+table thead {
+  background: rgba(0, 39, 118, 0.08);
+}
+
+.emptyState {
+  padding: 18px;
+  text-align: center;
+  color: var(--color-text-secondary);
+  background: rgba(0, 39, 118, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.tableFooter {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.06);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.tableFooter strong {
+  color: var(--color-text-primary);
+}
+
+.recurrenceBlock {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.04);
+  border: 1px dashed rgba(0, 39, 118, 0.25);
+}
+
+.recurrenceHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.recurrenceHeader strong {
+  color: var(--color-text-primary);
+  font-size: 1rem;
+}
+
+.recurrenceHeader span {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.recurrenceOptions {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.recurrenceOption {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.18);
+  background: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.recurrenceOption input {
+  display: none;
+}
+
+.recurrenceOption span {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.recurrenceOption small {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.recurrenceOptionActive {
+  border-color: rgba(0, 146, 63, 0.65);
+  box-shadow: 0 0 0 4px rgba(0, 146, 63, 0.18);
+  background: linear-gradient(135deg, rgba(0, 146, 63, 0.08), rgba(0, 39, 118, 0.05));
+}
+
+.recurrenceInline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.recurrenceInline label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.recurrenceInline input {
+  width: 110px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.18);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.recurrenceInfo {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}

@@ -1,0 +1,52 @@
+.tabBar {
+  display: inline-flex;
+  gap: 12px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+  margin-bottom: 24px;
+}
+
+.tabButton,
+.activeTab {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  background: transparent;
+  color: var(--color-text-secondary);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.tabButton:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.activeTab {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(0, 39, 118, 0.24);
+}
+
+.content {
+  display: grid;
+  gap: 24px;
+}
+
+.backButton {
+  appearance: none;
+  border: none;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.backButton:hover {
+  background: rgba(0, 39, 118, 0.18);
+  transform: translateY(-1px);
+}

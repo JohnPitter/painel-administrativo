@@ -1,0 +1,80 @@
+.wrapper {
+  display: grid;
+  gap: 24px;
+}
+
+.metricGrid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 26px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-md);
+}
+
+.cardHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cardHeaderCopy {
+  flex: 1 1 220px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.chart {
+  width: 100%;
+  height: 260px;
+}
+
+.timeframeToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+}
+
+.timeframeButton {
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.timeframeButton:hover {
+  background: rgba(0, 39, 118, 0.12);
+  color: var(--color-text-primary);
+}
+
+.timeframeButtonActive {
+  composes: timeframeButton;
+  background: #002776;
+  color: #fff;
+}

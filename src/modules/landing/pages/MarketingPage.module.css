@@ -1,0 +1,377 @@
+ .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 48px 20px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero {
+  background: radial-gradient(circle at top left, #002776, #001946);
+  color: #fff;
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.badge {
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.heroContent h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.heroContent p {
+  margin: 0;
+  max-width: 640px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.heroList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.heroCTA {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heroCTA button {
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.heroCTA button:first-of-type {
+  background: #00b37e;
+  color: #fff;
+}
+
+.heroCTA .secondaryButton {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.heroVisual {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroVisual img {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.25));
+}
+
+.trustBar {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trustBar div {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trustBar span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.features,
+.evidence,
+.visualShowcase,
+.modules,
+.testimonials,
+.pricing,
+.faq,
+.finalCTA {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.evidence h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.statsRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.statCard {
+  flex: 1 1 180px;
+  min-width: 160px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  padding: 20px;
+  text-align: center;
+  background: rgba(0, 39, 118, 0.03);
+}
+
+.statCard strong {
+  display: block;
+  font-size: 2rem;
+  color: var(--color-text-primary);
+}
+
+.statCard span {
+  color: var(--color-text-secondary);
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.featureCard {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  padding: 18px;
+  background: rgba(0, 39, 118, 0.02);
+}
+
+.modules {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  padding: 24px;
+  background: rgba(0, 39, 118, 0.02);
+}
+
+.modules ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.modules li {
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: #fff;
+  border: 1px solid rgba(0, 39, 118, 0.06);
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.testimonials blockquote {
+  margin: 0;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  background: #fff;
+}
+
+.testimonials footer {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.visualShowcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.visualCard {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.visualCard figure {
+  margin: 0;
+  text-align: center;
+}
+
+.visualCard img {
+  max-width: 100%;
+  height: auto;
+}
+
+.evidenceTag {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.pricingCard {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  padding: 24px;
+  background: rgba(0, 39, 118, 0.02);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popularTag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #002776;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.priceRow {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.priceDetail {
+  color: var(--color-text-secondary);
+}
+
+.pricingCard ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--color-text-secondary);
+}
+
+.pricingCard button {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #00b37e;
+  color: #fff;
+  align-self: flex-start;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.faqGrid article {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  padding: 18px;
+  background: rgba(0, 39, 118, 0.02);
+}
+
+.finalCTA {
+  text-align: center;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(0, 39, 118, 0.12);
+  padding: 32px;
+  background: rgba(0, 39, 118, 0.04);
+}
+
+.finalButtons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.finalButtons button {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.finalButtons button:first-of-type {
+  background: #002776;
+  color: #fff;
+}
+
+.finalButtons .secondaryButton {
+  background: rgba(0, 39, 118, 0.12);
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 32px 24px;
+  }
+
+  .heroCTA {
+    flex-direction: column;
+  }
+
+  .pricingCard button,
+  .heroCTA button {
+    width: 100%;
+    text-align: center;
+  }
+}

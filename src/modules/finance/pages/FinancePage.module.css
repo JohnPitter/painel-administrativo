@@ -1,0 +1,156 @@
+.tabBar {
+  display: flex;
+  gap: 12px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+
+.tabButton,
+.activeTab {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  background: transparent;
+  color: var(--color-text-secondary);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.tabButton:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.activeTab {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(0, 39, 118, 0.24);
+}
+
+.content {
+  margin-top: 32px;
+}
+
+
+.loadingState {
+  margin-top: 24px;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-md);
+  padding: 48px 24px;
+  color: var(--color-text-secondary);
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 4px solid rgba(0, 39, 118, 0.18);
+  border-top-color: var(--color-accent);
+  animation: finance-spin 0.9s linear infinite;
+}
+
+.loadingState p {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.loadingState span {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.overview {
+  display: grid;
+  gap: 28px;
+}
+
+.helperCard {
+  padding: 24px 26px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 39, 118, 0.1);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.helperCard h2 {
+  margin: 0;
+}
+
+.helperCard ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.helperCard li {
+  margin-bottom: 8px;
+  color: var(--color-text-secondary);
+}
+
+.investmentsArea {
+  display: grid;
+  gap: 28px;
+  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.backButton {
+  appearance: none;
+  border: none;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.backButton:hover {
+  background: rgba(0, 39, 118, 0.18);
+  transform: translateY(-1px);
+}
+
+@keyframes finance-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .tabBar {
+    border-radius: var(--radius-lg);
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .tabButton,
+  .activeTab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}

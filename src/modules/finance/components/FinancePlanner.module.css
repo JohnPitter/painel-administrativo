@@ -1,0 +1,398 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px 26px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-md);
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--color-text-primary);
+}
+
+.header p {
+  margin: 4px 0 0;
+  color: var(--color-text-secondary);
+}
+
+.summaryGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 140px;
+}
+
+.filter label {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.filter select {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  font-weight: 600;
+}
+
+.periodBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0, 39, 118, 0.08);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.08);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.summaryCard span {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.planningControls {
+  margin-top: 12px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.planningControlField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+  box-shadow: var(--shadow-md);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formRow input,
+.formSplit input {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.formSplit {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.goalSummary {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.06);
+}
+
+.goalSummary span {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.planningIncomeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.planningIncomeRow input {
+  flex: 1 1 160px;
+}
+
+.syncButton {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.syncButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.helperText {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.resetButton {
+  appearance: none;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  background: rgba(0, 39, 118, 0.1);
+  color: var(--color-accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.resetButton:hover {
+  background: rgba(0, 39, 118, 0.18);
+}
+
+.emptyState {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 39, 118, 0.06);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.tableWrapper {
+  max-height: 420px;
+  overflow: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.08);
+}
+
+.tableWrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.tableWrapper th,
+.tableWrapper td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 39, 118, 0.08);
+}
+
+.tableWrapper thead {
+  background: rgba(0, 39, 118, 0.08);
+}
+
+.inputWithSuffix {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.inputWithSuffix input {
+  width: 90px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 39, 118, 0.16);
+}
+
+.inputWithSuffix span {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.tableFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 39, 118, 0.08);
+  color: var(--color-text-secondary);
+}
+
+.tableFooter strong {
+  color: var(--color-text-primary);
+}
+
+.negative {
+  color: #d93025;
+}
+
+.tipsList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--color-text-secondary);
+}
+
+.tipsList strong {
+  color: var(--color-text-primary);
+}
+
+.diffPositive {
+  color: #00923f;
+  font-weight: 600;
+}
+
+.diffNegative {
+  color: #d93025;
+  font-weight: 600;
+}
+
+.goalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.goalFormFields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.goalFormFields label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.goalFormFields input {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 39, 118, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.addGoalButton {
+  align-self: flex-start;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.removeGoalButton {
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  background: rgba(217, 48, 37, 0.9);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.presetButton {
+  text-align: left;
+  border: 1px solid rgba(0, 39, 118, 0.15);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.presetButton strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-text-primary);
+}
+
+.presetButton span {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.presetButton:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 16px rgba(0, 39, 118, 0.12);
+}
