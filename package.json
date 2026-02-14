@@ -15,8 +15,9 @@
     "clsx": "^2.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "firebase": "^10.7.2",
-    "jspdf": "^2.5.1",
+    "express": "^4.19.2",
+    "firebase": "^12.9.0",
+    "jspdf": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
@@ -24,16 +25,15 @@
     "react-router-dom": "^6.21.3",
     "recharts": "^3.3.0",
     "stripe": "^15.10.0",
-    "zod": "^3.22.4",
-    "express": "^4.19.2"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",
-    "firebase-tools": "^14.23.0",
+    "concurrently": "^8.2.2",
+    "firebase-tools": "^15.6.0",
     "typescript": "^5.3.3",
-    "vite": "^5.0.8",
-    "concurrently": "^8.2.2"
+    "vite": "^7.3.1"
   }
 }
