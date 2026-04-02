@@ -5,7 +5,7 @@ import { resolve } from 'node:path';
 const resolveFunctionsProxy = () => {
   const rawTarget =
     process.env.FUNCTIONS_API_URL ||
-    'https://southamerica-east1-painel-administrativo-br.cloudfunctions.net/api';
+    'http://localhost:5001/painel-administrativo-br/southamerica-east1/api';
   const url = new URL(rawTarget);
   const target = `${url.protocol}//${url.host}`;
   const basePath = url.pathname === '/' ? '' : url.pathname.replace(/\/$/, '');

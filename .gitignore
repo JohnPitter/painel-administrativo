@@ -64,7 +64,15 @@ node_modules/
 
 # dotenv environment variables file
 .env
+.env.*
+!.env.example
 functions/.env
+
+# Lock files (subdirectories)
+functions/package-lock.json
+
+# Build output
+dist/
 
 # dataconnect generated files
 .dataconnect

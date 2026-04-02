@@ -39,9 +39,14 @@ app.use(
   )
 );
 
-const defaultProxyTarget =
-  process.env.FUNCTIONS_PROXY_TARGET ||
-  'https://southamerica-east1-painel-administrativo-br.cloudfunctions.net/api';
+const defaultProxyTarget = process.env.FUNCTIONS_PROXY_TARGET;
+
+if (!defaultProxyTarget) {
+  console.error(
+    '[stripe-backend] Defina FUNCTIONS_PROXY_TARGET no .env. Consulte .env.example para detalhes.'
+  );
+  process.exit(1);
+}
 const proxyUrl = new URL(defaultProxyTarget);
 const proxyPathBase = proxyUrl.pathname.endsWith('/')
   ? proxyUrl.pathname.slice(0, -1)
