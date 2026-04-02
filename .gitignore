@@ -73,6 +73,7 @@ functions/package-lock.json
 
 # Build output
 dist/
+out/
 
 # dataconnect generated files
 .dataconnect

@@ -8,7 +8,9 @@
     "dev:server": "node server/index.js",
     "dev:full": "concurrently \"npm:dev\" \"npm:dev:server\"",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "video:preview": "remotion studio video/src/index.ts",
+    "video:render": "remotion render video/src/index.ts PromoVideo out/promo.mp4"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -28,11 +30,14 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@remotion/cli": "^4.0.443",
+    "@remotion/player": "^4.0.443",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",
     "concurrently": "^8.2.2",
     "firebase-tools": "^15.6.0",
+    "remotion": "^4.0.443",
     "typescript": "^5.3.3",
     "vite": "^7.3.1"
   }
