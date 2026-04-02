@@ -13,6 +13,8 @@
 
 [Features](#features) · [Arquitetura](#arquitetura) · [Tech Stack](#tech-stack) · [Desenvolvimento](#desenvolvimento) · [Video Promo](#video-promocional)
 
+<img src="assets/promo.gif" alt="Painel Admin Demo" width="720" />
+
 </div>
 
 ---
@@ -119,6 +121,8 @@ graph TD
 # Clone
 git clone https://github.com/JohnPitter/painel-administrativo.git
 cd painel-administrativo
+# Ou via SSH
+git clone git@github.com:JohnPitter/painel-administrativo.git
 
 # Instale dependencias
 npm install

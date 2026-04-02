@@ -6,203 +6,99 @@ import {
   spring,
   useVideoConfig,
 } from 'remotion';
-import { COLORS, BRAND, MODULES } from '../constants';
+import { COLORS, APP_SHORTCUTS } from '../constants';
 
+/**
+ * Scene 4 — "Impacto" (120 frames = 4s)
+ * BIG animated stats. Scrolling module ribbon. Social proof.
+ * No emojis as stats icons — uses bold numbers/symbols.
+ */
 export const Scene04_BrandStatement: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const floatY = Math.sin(frame * 0.04) * 6;
+  const countUp = (target: number, start: number, dur: number) =>
+    Math.round(interpolate(frame, [start, start + dur], [0, target], { extrapolateRight: 'clamp', extrapolateLeft: 'clamp' }));
 
-  const logoScale = spring({
-    frame: frame - 5,
-    fps,
-    config: { damping: 12, stiffness: 60 },
-  });
-
-  const logoOpacity = interpolate(frame, [5, 20], [0, 1], {
-    extrapolateRight: 'clamp',
-    extrapolateLeft: 'clamp',
-  });
-
-  const taglineOpacity = interpolate(frame, [25, 40], [0, 1], {
-    extrapolateRight: 'clamp',
-    extrapolateLeft: 'clamp',
-  });
-
-  const taglineY = spring({
-    frame: frame - 25,
-    fps,
-    config: { damping: 18, stiffness: 80 },
-  });
-
-  const shineX = interpolate(frame, [15, 80], [-200, 200], {
-    extrapolateRight: 'clamp',
-  });
-
-  const vignetteOpacity = interpolate(frame, [0, 30], [0, 0.6], {
-    extrapolateRight: 'clamp',
-  });
-
-  const featureRows = [
-    MODULES.slice(0, 4),
-    MODULES.slice(4, 8),
+  const stats = [
+    { number: countUp(8, 8, 30), suffix: '', label: 'Modulos\nintegrados' },
+    { number: countUp(1, 12, 30), suffix: '', label: 'Unico\npainel' },
+    { number: countUp(100, 16, 35), suffix: '%', label: 'Controle\ntotal' },
+    { number: countUp(0, 20, 35), suffix: '', label: 'Planilhas\nnecessarias' },
   ];
 
-  return (
-    <AbsoluteFill
-      style={{
-        backgroundColor: COLORS.dark,
-        overflow: 'hidden',
-      }}
-    >
-      {/* Radial glow */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '30%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 800,
-          height: 800,
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${COLORS.orange}12 0%, transparent 60%)`,
-          filter: 'blur(80px)',
-        }}
-      />
+  const headlineSpring = spring({ frame: frame - 5, fps, config: { damping: 14, stiffness: 60 } });
 
-      {/* Feature icons ring */}
+  const ribbonX = interpolate(frame, [0, 120], [80, -180], { extrapolateRight: 'clamp' });
+
+  const socialOpacity = interpolate(frame, [65, 80], [0, 1], { extrapolateRight: 'clamp', extrapolateLeft: 'clamp' });
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: '#f0f2f9', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 30%, rgba(0,146,63,0.08), transparent 45%), radial-gradient(circle at 50% 70%, rgba(0,39,118,0.06), transparent 45%)' }} />
+
+      {/* Headline */}
       <div
         style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: `translate(-50%, -50%) translateY(${floatY}px)`,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 20,
+          textAlign: 'center',
+          paddingTop: 80,
+          opacity: interpolate(headlineSpring, [0, 1], [0, 1]),
+          transform: `translateY(${interpolate(headlineSpring, [0, 1], [24, 0])}px)`,
         }}
       >
-        {featureRows.map((row, rowIdx) => (
-          <div key={rowIdx} style={{ display: 'flex', gap: 20 }}>
-            {row.map((mod, i) => {
-              const idx = rowIdx * 4 + i;
-              const itemSpring = spring({
-                frame: frame - 10 - idx * 4,
-                fps,
-                config: { damping: 14, stiffness: 60 },
-              });
-              return (
-                <div
-                  key={mod.name}
-                  style={{
-                    width: 100,
-                    height: 100,
-                    borderRadius: 20,
-                    background: `linear-gradient(135deg, ${COLORS.warmGray}, #252017)`,
-                    border: `1px solid ${COLORS.gold}20`,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 6,
-                    opacity: interpolate(itemSpring, [0, 1], [0, 1]),
-                    transform: `scale(${interpolate(itemSpring, [0, 1], [0.8, 1])})`,
-                  }}
-                >
-                  <div style={{ fontSize: 28 }}>{mod.icon}</div>
-                  <div
-                    style={{
-                      color: COLORS.cream,
-                      fontSize: 11,
-                      fontWeight: 500,
-                      letterSpacing: 0.5,
-                    }}
-                  >
-                    {mod.name}
-                  </div>
-                </div>
-              );
-            })}
+        <div style={{ fontSize: 48, fontWeight: 700, color: COLORS.textPrimary, fontFamily: 'Inter, system-ui, sans-serif', lineHeight: 1.2, letterSpacing: -1 }}>
+          Tudo que voce precisa.
+        </div>
+        <div style={{ fontSize: 48, fontWeight: 700, color: COLORS.primary, fontFamily: 'Inter, system-ui, sans-serif', lineHeight: 1.2, letterSpacing: -1 }}>
+          Nada que voce nao precisa.
+        </div>
+      </div>
+
+      {/* Stats grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28, padding: '52px 100px 0' }}>
+        {stats.map((stat, i) => {
+          const s = spring({ frame: frame - 10 - i * 5, fps, config: { damping: 10, stiffness: 45 } });
+          return (
+            <div
+              key={stat.label}
+              style={{
+                padding: '36px 28px',
+                borderRadius: 24,
+                background: 'rgba(255,255,255,0.95)',
+                border: '1px solid rgba(0,39,118,0.06)',
+                boxShadow: '0 8px 32px rgba(0,39,118,0.1)',
+                textAlign: 'center',
+                opacity: interpolate(s, [0, 1], [0, 1]),
+                transform: `scale(${interpolate(s, [0, 1], [0.7, 1])}) translateY(${interpolate(s, [0, 1], [40, 0])}px)`,
+              }}
+            >
+              <div style={{ fontSize: 64, fontWeight: 800, color: COLORS.accent, fontFamily: 'Inter, system-ui, sans-serif', lineHeight: 1 }}>
+                {stat.number}{stat.suffix}
+              </div>
+              <div style={{ fontSize: 16, color: COLORS.textSecondary, marginTop: 12, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500, whiteSpace: 'pre-line', lineHeight: 1.3 }}>
+                {stat.label}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Module ribbon */}
+      <div style={{ position: 'absolute', bottom: 120, left: 0, width: '250%', display: 'flex', gap: 16, transform: `translateX(${ribbonX}px)` }}>
+        {[...APP_SHORTCUTS, ...APP_SHORTCUTS, ...APP_SHORTCUTS].map((app, i) => (
+          <div key={`${app.name}-${i}`} style={{ padding: '12px 22px', borderRadius: 16, background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(0,39,118,0.06)', display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0, boxShadow: '0 4px 16px rgba(0,39,118,0.06)' }}>
+            <div style={{ width: 36, height: 36, borderRadius: 10, background: `linear-gradient(135deg, ${app.color}, rgba(0, 39, 118, 0.85))`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700, color: '#fff', fontFamily: 'Inter, system-ui, sans-serif' }}>{app.icon}</div>
+            <span style={{ fontSize: 15, fontWeight: 600, color: COLORS.textPrimary, fontFamily: 'Inter, system-ui, sans-serif', whiteSpace: 'nowrap' }}>{app.name}</span>
           </div>
         ))}
       </div>
 
-      {/* Brand name */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 100,
-          width: '100%',
-          textAlign: 'center',
-          opacity: logoOpacity,
-          transform: `scale(${interpolate(logoScale, [0, 1], [0.9, 1])})`,
-        }}
-      >
-        <div
-          style={{
-            fontFamily: 'system-ui, sans-serif',
-            fontSize: 56,
-            fontWeight: 700,
-            color: COLORS.cream,
-            letterSpacing: 6,
-            textTransform: 'uppercase',
-            position: 'relative',
-            display: 'inline-block',
-          }}
-        >
-          {BRAND.name}
-          {/* Shine accent */}
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: shineX,
-              width: 60,
-              height: '100%',
-              background: `linear-gradient(90deg, transparent, ${COLORS.gold}40, transparent)`,
-              filter: 'blur(8px)',
-              pointerEvents: 'none',
-            }}
-          />
+      {/* Social proof */}
+      <div style={{ position: 'absolute', bottom: 50, width: '100%', textAlign: 'center', opacity: socialOpacity }}>
+        <div style={{ fontSize: 18, color: COLORS.textSecondary, fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500 }}>
+          Junte-se a quem ja organizou a vida com o Painel Admin
         </div>
       </div>
-
-      {/* Tagline */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 100,
-          width: '100%',
-          textAlign: 'center',
-          opacity: taglineOpacity,
-          transform: `translateY(${interpolate(taglineY, [0, 1], [20, 0])}px)`,
-        }}
-      >
-        <div
-          style={{
-            fontFamily: 'system-ui, sans-serif',
-            fontSize: 22,
-            fontWeight: 300,
-            color: COLORS.gold,
-            letterSpacing: 3,
-          }}
-        >
-          para quem escolhe o extraordinario
-        </div>
-      </div>
-
-      {/* Vignette */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: `radial-gradient(ellipse 80% 80% at 50% 50%, transparent 50%, ${COLORS.dark} 100%)`,
-          opacity: vignetteOpacity,
-          pointerEvents: 'none',
-        }}
-      />
     </AbsoluteFill>
   );
 };
