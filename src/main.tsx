@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <FirebaseProvider>
       <AuthProvider>
         <AccountProvider>
-          <BrowserRouter future={{ v7_startTransition: true }}>
+          <BrowserRouter>
             <App />
           </BrowserRouter>
           <Toaster
