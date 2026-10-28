@@ -27,7 +27,7 @@
     "react-router-dom": "^7.18.2",
     "recharts": "^3.3.0",
     "stripe": "^15.10.0",
-    "zod": "^3.22.4"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@remotion/cli": "^4.0.515",
